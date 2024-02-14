@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="bg-dark text-light">
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-6">
+          <!-- ////////////////////////// Email ////////////////////////////////// -->
+
+          <div class="mb-3">
+            <h2 class="text-center mb-5">Register</h2>
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              id="email"
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <hr />
+          <!-- ////////////////////////// Phone Number ////////////////////////////////// -->
+          <div class="my-3">
+            <br /><label for="">Enter Phone no</label><br />
+            <input type="number" id="phone" />
+            <button id="registerBtn" type="submit" class="btn btn-primary">
+              Signup
+            </button>
+          </div>
+          <div id="recaptcha-container"></div>
+          <div class="my-3">
+            <br /><label for="">Enter OTP</label><br />
+            <input type="number" id="otp" />
+            <button id="otpBtn" class="btn btn-primary">Verify</button>
+          </div>
+          <hr />
+
+          <!-- ////////////////////////// google ////////////////////////////////// -->
+          <button id="SignupWithGoogle" class="btn btn-primary">
+            Signup With google
+          </button>
+          <hr />
+          <!-- ////////////////////////// Facebook ////////////////////////////////// -->
+
+          <button id="SignupWithFacebook" class="btn btn-primary">
+            Signup With Facebook
+          </button>
+          <hr />
+          <p>already have an account?<a href="index.html">login</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="register.js"></script>
+  </body>
+</html>
