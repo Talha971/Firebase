@@ -5,7 +5,9 @@ import {
     signInWithPhoneNumber,
     googleProvider,
     signInWithPopup,
-    GoogleAuthProvider
+    GoogleAuthProvider,
+    facebookProvider,
+    FacebookAuthProvider
 } from "./firebase.js";
 
 
@@ -101,8 +103,29 @@ SignupWithGoogle.addEventListener("click", SignInWithGoogle)
 
 ////////////////////////////////// Facebook ///////////////////////////////////
 
-let SignInWithFacebook = () => { }
+let SignInWithFacebook = () => {
+    signInWithPopup(auth, facebookProvider)
+        .then((result) => {
+            const user = result.user;
+
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const accessToken = credential.accessToken;
+            console.log('user-->', user);
+        })
+        .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = FacebookAuthProvider.credentialFromError(error);
+            console.log('error-->', error);
+
+            // ...
+        });
+}
 
 
-let SignupWithFacebook = document.getElementById("SignupWithGoogle")
+let SignupWithFacebook = document.getElementById("SignupWithFacebook")
 SignupWithFacebook.addEventListener("click", SignInWithFacebook)
