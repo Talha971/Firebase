@@ -7,7 +7,10 @@ import {
     signInWithPopup,
     GoogleAuthProvider,
     facebookProvider,
-    FacebookAuthProvider
+    FacebookAuthProvider,
+    db,
+    doc,
+    setDoc
 } from "./firebase.js";
 
 
@@ -75,7 +78,21 @@ let otpVerification = document.getElementById("otpBtn")
 otpVerification.addEventListener("click", verify)
 
 
-////////////////////////////////// Google ///////////////////////////////////
+////////////////////////////////// GOOGLE ///////////////////////////////////
+
+
+/////////////////////////////////////// FIRESTORE //////////////////////////////////////////
+let addUserToFirestore = async (user) => {
+    const res = await setDoc(doc(db, "users", user.uid), {
+        name: user.displayName,
+        email: user.email,
+        verify: user.emailVerified,
+        photo: user.photoURL,
+        uid: user.uid
+    })
+    console.log("res-->", res);
+}
+
 
 
 let SignInWithGoogle = () => {
@@ -86,6 +103,7 @@ let SignInWithGoogle = () => {
             const token = credential.accessToken;
             const user = result.user;
             console.log('user-->', user);
+            addUserToFirestore(user)
         }).catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -129,3 +147,5 @@ let SignInWithFacebook = () => {
 
 let SignupWithFacebook = document.getElementById("SignupWithFacebook")
 SignupWithFacebook.addEventListener("click", SignInWithFacebook)
+
+

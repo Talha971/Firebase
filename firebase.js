@@ -22,10 +22,22 @@ import {
     signInWithPopup,
 
     // facebook
-    FacebookAuthProvider
+    FacebookAuthProvider,
+
+    ////////////////////////////////// FIRESTORE ///////////////////////////////////////
 
 } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js'
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js'
+
+////////////////////////////////// FIRESTORE ///////////////////////////////////////////////
+import {
+    doc,
+    setDoc,
+    getFirestore,
+    getDoc,
+    updateDoc,
+    deleteDoc
+} from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js'
 
 const firebaseConfig = {
     apiKey: "AIzaSyD4c2t8EhDyhufRVOgEpaapHQTfcsziMFk",
@@ -38,9 +50,15 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app)
+
 // google provider
 const googleProvider = new GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
+
+// firestore
+const db = getFirestore(app);
+
+
 
 export {
     auth,
@@ -55,6 +73,12 @@ export {
     GoogleAuthProvider,
     signInWithPopup,
     FacebookAuthProvider,
-    facebookProvider
-
+    facebookProvider,
+    // firestore
+    doc,
+    setDoc,
+    db,
+    getDoc,
+    updateDoc,
+    deleteDoc
 }  
